@@ -6,6 +6,8 @@ const year = document.querySelector("#year");
 const copyEmailButton = document.querySelector(".copy-email");
 const filterChips = document.querySelectorAll(".filter-chip");
 const projectCards = document.querySelectorAll(".project-card[data-category]");
+const projectEmpty = document.querySelector(".project-empty");
+const portfolioCube = document.querySelector("#portfolio-cube");
 
 if (year) {
   year.textContent = new Date().getFullYear();
@@ -80,8 +82,83 @@ if (filterChips.length > 0 && projectCards.length > 0) {
         const shouldShow = filter === "all" || card.dataset.category === filter;
         card.classList.toggle("is-hidden", !shouldShow);
       });
+
+      if (projectEmpty) {
+        const hasVisibleCards = [...projectCards].some((card) => !card.classList.contains("is-hidden"));
+        projectEmpty.classList.toggle("visible", !hasVisibleCards);
+      }
     });
   });
+}
+
+if (portfolioCube) {
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let rotationX = -18;
+  let rotationY = 32;
+  let previousFrameTime = 0;
+  const autoRotateSpeed = 0.026;
+
+  const rotateCube = () => {
+    portfolioCube.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+  };
+
+  const animateCube = (timestamp) => {
+    if (!previousFrameTime) {
+      previousFrameTime = timestamp;
+    }
+
+    const deltaTime = timestamp - previousFrameTime;
+    previousFrameTime = timestamp;
+
+    if (!isDragging) {
+      rotationY += deltaTime * autoRotateSpeed;
+      rotateCube();
+    }
+
+    window.requestAnimationFrame(animateCube);
+  };
+
+  portfolioCube.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+    isDragging = true;
+    startX = event.clientX;
+    startY = event.clientY;
+    portfolioCube.classList.add("is-dragging");
+    rotateCube();
+    portfolioCube.setPointerCapture(event.pointerId);
+  });
+
+  portfolioCube.addEventListener("pointermove", (event) => {
+    if (!isDragging) return;
+    event.preventDefault();
+
+    const deltaX = event.clientX - startX;
+    const deltaY = event.clientY - startY;
+    startX = event.clientX;
+    startY = event.clientY;
+    rotationY += deltaX * 0.45;
+    rotationX -= deltaY * 0.35;
+    rotationX = Math.max(-70, Math.min(70, rotationX));
+    rotateCube();
+  });
+
+  const stopDragging = (event) => {
+    if (!isDragging) return;
+
+    isDragging = false;
+    portfolioCube.classList.remove("is-dragging");
+    if (portfolioCube.hasPointerCapture(event.pointerId)) {
+      portfolioCube.releasePointerCapture(event.pointerId);
+    }
+  };
+
+  portfolioCube.addEventListener("pointerup", stopDragging);
+  portfolioCube.addEventListener("pointercancel", stopDragging);
+  portfolioCube.addEventListener("dragstart", (event) => event.preventDefault());
+  rotateCube();
+  window.requestAnimationFrame(animateCube);
 }
 
 if (copyEmailButton) {
