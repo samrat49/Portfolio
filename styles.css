@@ -805,7 +805,6 @@ h3 {
 
 .tools-section,
 .process-section,
-.connect-section,
 .experience-section,
 .contact-section {
   background: linear-gradient(180deg, transparent, rgba(18, 184, 184, 0.08), transparent);
@@ -983,6 +982,16 @@ h3 {
   transition: opacity 220ms ease, transform 220ms ease, background 180ms ease;
 }
 
+.project-link-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-link-card:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 5px;
+}
+
 .project-card:hover {
   background: var(--panel-strong);
   transform: translateY(-6px);
@@ -1033,8 +1042,27 @@ h3 {
   transition: transform 350ms ease;
 }
 
+.chakrascope-thumbnail {
+  padding: 22px;
+  background: #ffffff;
+}
+
+.chakrascope-thumbnail img {
+  object-fit: contain;
+}
+
 .project-card:hover .project-media img {
   transform: scale(1.04);
+}
+
+.project-action {
+  align-self: flex-start;
+  margin-top: 16px;
+  color: var(--lime);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .project-card.featured {
@@ -1173,6 +1201,10 @@ h3 {
   margin-top: 38px;
 }
 
+.contact-connect {
+  margin-top: clamp(56px, 8vw, 88px);
+}
+
 .social-icon {
   display: grid;
   width: 78px;
@@ -1198,7 +1230,7 @@ h3 {
   width: 54px;
   height: 54px;
   padding: 14px;
-  fill: #04111d;
+  fill: #ffffff;
   border-radius: 999px;
 }
 
