@@ -1042,12 +1042,16 @@ h3 {
   transition: transform 350ms ease;
 }
 
-.chakrascope-thumbnail {
+.project-loading {
+  justify-content: center;
+}
+
+.project-media-contain {
   padding: 22px;
   background: #ffffff;
 }
 
-.chakrascope-thumbnail img {
+.project-media-contain img {
   object-fit: contain;
 }
 
