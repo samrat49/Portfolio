@@ -318,8 +318,12 @@ const loadProjects = async () => {
     if (savedProjects) {
       try {
         const projects = JSON.parse(savedProjects);
-        renderProjects(Array.isArray(projects) ? projects : []);
-        return;
+        if (Array.isArray(projects) && projects.length > 0) {
+          renderProjects(projects);
+          return;
+        }
+
+        localStorage.removeItem(adminProjectStorageKey);
       } catch {
         localStorage.removeItem(adminProjectStorageKey);
       }
@@ -333,7 +337,7 @@ const loadProjects = async () => {
     }
 
     const projects = await response.json();
-    renderProjects(Array.isArray(projects) ? projects : []);
+    renderProjects(Array.isArray(projects) && projects.length > 0 ? projects : fallbackProjects);
   } catch {
     renderProjects(fallbackProjects);
   }
