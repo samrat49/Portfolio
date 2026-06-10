@@ -330,7 +330,7 @@ const loadProjects = async () => {
     }
 
     const source = projectGrid.dataset.projectSource || "data/projects.json";
-    const response = await fetch(source);
+    const response = await fetch(source, { cache: "no-store" });
 
     if (!response.ok) {
       throw new Error(`Could not load ${source}`);
