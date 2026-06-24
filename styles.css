@@ -89,11 +89,34 @@ textarea {
   gap: 14px;
 }
 
+.brand-logo-wrap {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
 .brand-logo {
   display: block;
-  width: auto;
-  height: 54px;
-  object-fit: contain;
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 1rem;
+}
+
+.brand small {
+  color: var(--muted);
+  font-size: 0.76rem;
 }
 
 .nav-links {
