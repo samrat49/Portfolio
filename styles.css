@@ -1342,25 +1342,13 @@ h3 {
 .footer-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  text-align: center;
   color: var(--muted);
 }
 
 .footer-content p {
   margin-bottom: 0;
-}
-
-.social-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.social-links a {
-  padding: 9px 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
 }
 
 .reveal {
@@ -1518,8 +1506,7 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .contact-card,
-  .footer-content {
+  .contact-card {
     align-items: flex-start;
     flex-direction: column;
   }
