@@ -1144,6 +1144,20 @@ h3 {
   padding: 28px;
   overflow: hidden;
   border-radius: var(--radius);
+  transition:
+    transform 220ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 220ms ease;
+}
+
+.process-card:hover {
+  background: var(--panel-strong);
+  border-color: rgba(32, 215, 232, 0.35);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(32, 215, 232, 0.12);
+  transform: translateY(-6px);
 }
 
 .process-card::before {
@@ -1154,6 +1168,13 @@ h3 {
   height: 140px;
   content: "";
   background: radial-gradient(circle, rgba(32, 215, 232, 0.25), transparent 68%);
+  transition: transform 280ms ease, opacity 220ms ease;
+}
+
+.process-card:hover::before {
+  opacity: 1;
+  transform: scale(1.35);
+  background: radial-gradient(circle, rgba(32, 215, 232, 0.42), transparent 68%);
 }
 
 .process-card span {
