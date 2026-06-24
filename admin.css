@@ -70,16 +70,11 @@ code {
   text-decoration: none;
 }
 
-.brand span {
-  display: grid;
-  width: 44px;
+.brand-logo {
+  display: block;
+  width: auto;
   height: 44px;
-  place-items: center;
-  color: #04111d;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--cyan), var(--lime));
-  border-radius: 14px;
-  box-shadow: 0 0 28px rgba(32, 215, 232, 0.24);
+  object-fit: contain;
 }
 
 .header-actions {
