@@ -105,6 +105,13 @@ textarea {
   object-position: top center;
 }
 
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.15;
+}
+
 .brand strong,
 .brand small {
   display: block;
